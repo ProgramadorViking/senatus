@@ -1,3 +1,3 @@
 <?php
-  echo "hola";
+  require_once 'routes/api.php';
 ?>
