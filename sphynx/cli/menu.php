@@ -40,7 +40,6 @@
             clean();
             print_r("SPHYNX - Creación/Modificación de database.ini\n");
             print_r("----------------------------------------------\n");
-            print_r("fichero: ".$file);
             if(file_exists($file)) {
                 do {
                     $r = readline("El fichero existe, quiere modificarlo? (S/N)\n");
