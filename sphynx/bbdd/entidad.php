@@ -14,6 +14,10 @@
       return $this->PDO;
     }
 
+    public function errorInfo() {
+      return $this->PDO->errorInfo();
+    }
+
     public function getAll() {
             $pdo = $this->PDO;
             $result=$pdo->query("SELECT * FROM ".$this->table);

@@ -18,24 +18,39 @@ password = '.$password;
     }
 
     function create_migration($migration) {
-
+      if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        $command = 'vendor\bin\phinx create '.$migration;
+      } else {
         $command = 'php vendor/bin/phinx create '.$migration;
+      }
         shell_exec($command);
     }
 
     function run_migrations() {
+      if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        $command = 'vendor\bin\phinx migrate -e development';
+      } else {
         $command = 'php vendor/bin/phinx migrate -e development';
+      }
         shell_exec($command);
 
     }
 
     function run_rollback() {
+      if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        $command = 'vendor\bin\phinx rollback -e development';
+      } else {
         $command = 'php vendor/bin/phinx rollback -e development';
+      }
         shell_exec($command);
     }
 
     function create_seeder($seed) {
-        $command = 'php vendor/bin/phinx seed:create'.$seed;
+      if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        $command = 'vendor\bin\phinx seed:create '.$seed;
+      } else {
+        $command = 'php vendor/bin/phinx seed:create '.$seed;
+      }
         shell_exec($command);
     }
 

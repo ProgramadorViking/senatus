@@ -4,5 +4,11 @@
 
   $app = new hermes();
 
-  $app->get('hola');
+  $app->post('/user/save','UserController@save');
+  $app->post('/user/login','UserController@login');
+  $app->post('/user/isLogin','UserController@isLogin');
+
+  if(middleware::auth()) {
+    $app->post('/user/dani','UserController@test');
+  }
 ?>

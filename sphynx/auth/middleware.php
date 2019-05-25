@@ -5,14 +5,15 @@
 
   class middleware extends Core {
 
-    private function getPDO() {
+    private static function getPDO() {
       $bd = new Core();
       return $bd->connect();
     }
 
     public static function auth() {
 
-      $token = $_SERVER['PHP_AUTH_USER'];
+      $data = $data = json_decode(file_get_contents('php://input'));
+      $token = $data->token;
       $key = 'appaloosa';
       try {
         $array = (array)JWT::decode($token,$key,array('HS256'));

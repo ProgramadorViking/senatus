@@ -74,9 +74,15 @@
 
     //Funciones extras
     public function save() {
-      $query = "INSERT INTO users ('campos')
+      $query = "INSERT INTO users (id,password,worker_id,name,date1,active,role_id,token)
         VALUES(NULL,
-          valores)";
+          '".$this->password."',
+          '".$this->worker_id."',
+          '".$this->name."',
+          '".$this->date1."',
+          '".$this->active."',
+          '".$this->role_id."',
+          '".$this->token."');";
       $db = parent::getPDO();
       $save=$db->query($query);
       return $save;
