@@ -27,10 +27,9 @@
                 }
                 $verify=$resultSet[0];
                 if($verify['token']==$array['data']->token) {
+                  //només verifica el token creat al login sigui correcte
                     return true;
                 } else {
-                    var_dump($verify['token']);
-                    var_dump($array['data']->token);
                     return false;
                 }
             } else {

@@ -41,6 +41,7 @@
       if(password_verify($request->password, $user['password'])) {
         $db->setToken($nwt);
         $db->login($user['id']);
+        $user['password']='';
         $token = self::createToken($user);
         $result = "{'token': '".$token."'}";
         echo json_encode($result);
