@@ -7,7 +7,7 @@
 
         do {
             clean();
-            print_r("Bienvenido a la instalación de SPHYNX\n");
+            print_r("Bienvenido a la instalación de SENATUS/sphynx\n");
             print_r("-------------------------------------\n");
             print_r("\nElija una opción del menú:\n");
             print_r("1. Creación/Modificación de database.ini.\n");

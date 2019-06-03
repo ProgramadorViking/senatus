@@ -3,7 +3,7 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class Users extends AbstractMigration
+class Role extends AbstractMigration
 {
     /**
      * Change Method.
@@ -28,18 +28,17 @@ class Users extends AbstractMigration
      */
     public function change()
     {
-      $exists = $this->hasTable('users');
-        if (!$exists) {
-            $users = $this->table('users');
-            //Id es automaticamente la Primery Key
-            $users->addColumn('name','string',['limit'=>50,'null'=>false])
-                  ->addColumn('worker_id','integer')
-                  ->addColumn('date1','date')
-                  ->addColumn('active','boolean',['default'=>false])
-                  ->addColumn('role_id','integer')
-                  ->addColumn('password','string',['limit'=>300])
-                  ->addColumn('token','string',['limit'=>1000])
-                  ->create();
-        }
+      $exists = $this->hasTable('roles');
+      if (!$exists) {
+        $role = $this->table('roles');
+        $role->addColumn('name','string',['limit'=>50,'null'=>false])
+             ->addColumn('created','timestamp')
+             ->addColumn('updated','timestamp')
+             ->addColumn('created_by','integer')
+             ->addColumn('updated_by','integer')
+             ->create();
+         $users = $this->table('users');
+         $users->addForeignKey('role_id', 'roles', 'id')->save();
+      }
     }
 }

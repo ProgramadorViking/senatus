@@ -28,6 +28,7 @@
               $function = explode('@',$process);
               $request = array('id'=>$id);
               call_user_func($function,$data);
+              exit();
             }
             break;
           }
@@ -40,6 +41,7 @@
             $request += $ent;
           }
           call_user_func($function,$data);
+          exit();
         }
       }
     }

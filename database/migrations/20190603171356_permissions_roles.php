@@ -3,7 +3,7 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class Users extends AbstractMigration
+class PermissionsRoles extends AbstractMigration
 {
     /**
      * Change Method.
@@ -28,18 +28,14 @@ class Users extends AbstractMigration
      */
     public function change()
     {
-      $exists = $this->hasTable('users');
-        if (!$exists) {
-            $users = $this->table('users');
-            //Id es automaticamente la Primery Key
-            $users->addColumn('name','string',['limit'=>50,'null'=>false])
-                  ->addColumn('worker_id','integer')
-                  ->addColumn('date1','date')
-                  ->addColumn('active','boolean',['default'=>false])
-                  ->addColumn('role_id','integer')
-                  ->addColumn('password','string',['limit'=>300])
-                  ->addColumn('token','string',['limit'=>1000])
-                  ->create();
-        }
+      $exists = $this->hasTable('permission_roles');
+      if (!$exists) {
+        $mix = $this->table('permissions_roles');
+        $mix->addColumn('role_id','integer')
+            ->addColumn('permission_id','integer')
+            ->addForeignKey('role_id', 'roles', 'id')
+            ->addForeignKey('permission_id', 'permissions', 'id')
+            ->create();
+      }
     }
 }

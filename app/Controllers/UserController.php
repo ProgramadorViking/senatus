@@ -8,9 +8,8 @@
       parent::__construct();
     }
 
-    public function index() {
+    public static function index() {
       $db = new User();
-
       $user = $db->getAll();
       echo json_encode($user);
     }
