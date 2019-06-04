@@ -13,6 +13,7 @@
     //GET ->
     public function get($var) {
       echo $var;
+      exit();
     }
     //POST ->
     public function post($url,$process) {

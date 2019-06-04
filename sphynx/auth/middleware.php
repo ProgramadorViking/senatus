@@ -73,10 +73,12 @@
 
     public static function arrayToken() {
       $data = json_decode(file_get_contents('php://input'));
-      $token = $data->token;
-      $key = 'appaloosa';
-      $array = (array)JWT::decode($token,$key,array('HS256'));
-      return $array;
+      if($data) {
+        $token = $data->token;
+        $key = 'appaloosa';
+        $array = (array)JWT::decode($token,$key,array('HS256'));
+        return $array;
+      }
     }
   }
 ?>
